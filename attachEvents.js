@@ -40,7 +40,7 @@ var attachEvents = function(behaviors, element) {
 
         // target is a selector.  Attach the actions to matching elements.
         if ( document.querySelector(target) ) {
-            Array.slice.call(null, document.querySelectorAll(target)).forEach(function(element) {
+            Array.prototype.slice.call(document.querySelectorAll(target)).forEach(function(element) {
                 attachEvents(behaviors[target], element);
             });
 
