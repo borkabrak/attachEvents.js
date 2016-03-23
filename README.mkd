@@ -52,5 +52,6 @@ EXAMPLE
 
 TODO
 ----
-* support nested element selectors
-* dynamic event detection? (instead of checking a hardcoded array of event names)
+* support nested element selectors.
+* dynamic event detection? (instead of checking a hardcoded array of event names).
+* Improve demo with clear examples of each specific feature.
