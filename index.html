@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attach Events Demo</title>
+</head>
+<body>
+    <h1>Attach Events Demo</h1>
+
+    <div id="testlist">
+    
+    <ul>
+
+        <li id="item1">
+            Part One
+        </li>
+
+        <li id="item2">
+            Part Two
+        </li>
+
+        <li id="item3">
+            Part Three
+        </li>
+
+    </ul>
+
+</div>
+
+    <ul>
+        <h3>This list has no class.</h3>
+        <p>Placeholder for negative testing.</p>
+    </ul>
+
+</body>
+<script src="attachEvents.js"></script>
+<script>
+
+    attachEvents({
+ 
+        'click': () => console.log("click received."),
+
+        'o': (event) =>
+            console.log("The letter 'o' has keycode %s", event.which),
+
+        'li': {
+            'click': function(event) { 
+                console.log("clicking on any list item makes them all show their IDs");
+                event.target.innerHTML += " " + event.target.getAttribute("id");
+            }
+        },
+
+        'h1': {
+            'click': (event) => event.target.innerHTML += " Clicked!"
+        },
+
+ 
+    });
+
+</script>
+</html>
