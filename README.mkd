@@ -19,16 +19,27 @@ EXAMPLE
 
     attachEvents({
 
-        // attach actions to events
-        'click': (event) => console.log("click received."),
+        // Attach actions to events.
+        'click': function(event) { 
+            console.log("click received.")
+        },
 
-       // attach actions to specific keypresses
-        'o': (event) => console.log("The 'o' key has been received."),
+       // Attach actions to specific keypresses
+        'o': function(event) {
+            console.log("The 'o' key has been received.")
+        },
 
-       // attach whatever to specific elements
+       // Attach whatever to specific elements (Using 'arrow functions', a
+       // native part of modern javascript interpreters)
        'h1': {
-           'click': ()  => event.target.innerHTML = "click received on an <h1>",
-           'o': (event) => event.target.innerHTML = "The 'o' key has been received by an <h1>."
+
+           'click': function(event) { 
+                event.target.innerHTML = "click received on this <h1> element."
+           },
+
+           // May as well use arrow functions for one-liners..
+           'o': (event) => event.target.innerHTML = "The 'o' key has been received by this <h1>."
+
        });
 
 
