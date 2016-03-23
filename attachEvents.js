@@ -38,9 +38,11 @@ var attachEvents = function(behaviors, element) {
 
     Object.keys(behaviors).forEach( function(target) {
 
-        // target is a selector.  Attach the action to all matching elements.
+        // target is a selector.  Attach the actions to matching elements.
         if ( document.querySelector(target) ) {
-            attachEvents(behaviors[target], document.querySelector(target));
+            Array.slice.call(null, document.querySelectorAll(target)).forEach(function(element) {
+                attachEvents(behaviors[target], element);
+            });
 
         // single characters specify keypresses.  Add them to the keymap, which
         // gets attached to the keypress event.

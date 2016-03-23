@@ -19,33 +19,38 @@ EXAMPLE
 
     attachEvents({
 
-        // Attach actions to events.
+        // Attach actions to events by type.
         'click': function(event) { 
-            console.log("click received.")
+            console.log("click received by something on the document.")
         },
 
-       // Attach actions to specific keypresses
+        // A single character index attaches actions to specific keypresses
         'o': function(event) {
-            console.log("The 'o' key has been received.")
+            console.log("The 'o' key has been pressed.")
         },
 
-       // Attach whatever to specific elements (Using 'arrow functions', a
-       // native part of modern javascript interpreters)
+       // Use CSS selectors to attach actions to specific elements
+       '#target': {
+
+            'focus': function() { 
+                console.log("The element with id 'target' has received focus.");
+
+            // May as well use arrow functions for one-liners..
+            'o': (event) => event.target.innerHTML = "The 'o' key has been received by this element."
+
+            }
+       },
+
+       // CSS selectors also work for ALL matching elements.
        'h1': {
 
-           'click': function(event) { 
-                event.target.innerHTML = "click received on this <h1> element."
-           },
-
-           // May as well use arrow functions for one-liners..
-           'o': (event) => event.target.innerHTML = "The 'o' key has been received by this <h1>."
+           'click': (event) =>
+                event.target.innerHTML = "text appended onclick for this particular <h1> element, though they all have their own copy of this event."
 
        });
 
 
 TODO
 ----
-
-* attach to all matching elements
 * support nested element selectors
-
+* dynamic event detection? (instead of checking a hardcoded array of event names)
