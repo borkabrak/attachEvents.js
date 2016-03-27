@@ -7,8 +7,6 @@
 <body>
     <h1>Attach Events Demo</h1>
 
-    <div id="testlist">
-    
     <ul>
 
         <li id="item1">
@@ -25,8 +23,6 @@
 
     </ul>
 
-</div>
-
     <ul>
         <h3>This list has no class.</h3>
         <p>Placeholder for negative testing.</p>
@@ -36,26 +32,19 @@
 <script src="attachEvents.js"></script>
 <script>
 
+    "use strict";
+
     attachEvents({
- 
-        'click': () => console.log("click received."),
 
-        'o': (event) =>
-            console.log("The letter 'o' has keycode %s", event.which),
+            'click': () => console.log("document got a click."),
 
-        'li': {
-            'click': function(event) { 
-                console.log("clicking on any list item makes them all show their IDs");
-                event.target.innerHTML += " " + event.target.getAttribute("id");
+            'li': {
+                'click': function(event) {
+                    event.target.style.backgroundColor = "#8a8";
+                    console.log("%s got a click.", event.target.id);
+                }
             }
-        },
-
-        'h1': {
-            'click': (event) => 
-                event.target.innerHTML += " Clicked!"
-        },
-
- 
+        
     });
 
 </script>

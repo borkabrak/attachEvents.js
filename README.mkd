@@ -1,4 +1,4 @@
-ATTACHEVENTS
+attachEvents
 ============
 
 Attach events, easily.
@@ -12,6 +12,8 @@ DESCRIPTION
    'behaviors' is an object/hash/associative array that relates event types,
    specific keystrokes, and/or CSS-style element selectors to the actions they
    should trigger.
+
+   No dependencies.
 
 
 EXAMPLE
@@ -55,3 +57,5 @@ TODO
 * support nested element selectors.
 * dynamic event detection? (instead of checking a hardcoded array of event names).
 * Improve demo with clear examples of each specific feature.
+
+* set 'this' to event.target?
