@@ -63,45 +63,16 @@ var attachEvents = function(behaviors, element) {
 
 };
 
-// Reference list of all events in the official standard?
-var standard_events = [
-    "abort", "afterprint", "animationend", "animationiteration",
-    "animationstart", "audioprocess", "beforeprint", "beforeunload",
-    "beginEvent", "blocked", "blur", "cached", "canplay", "canplaythrough",
-    "change", "chargingchange", "chargingtimechange", "checking", "click",
-    "close", "complete", "complete", "compositionend", "compositionstart",
-    "compositionupdate", "contextmenu", "copy", "cut", "dblclick",
-    "devicelight", "devicemotion", "deviceorientation", "deviceproximity",
-    "dischargingtimechange", "DOMActivate", "DOMAttributeNameChanged",
-    "DOMAttrModified", "DOMCharacterDataModified", "DOMContentLoaded",
-    "DOMElementNameChanged", "DOMNodeInserted", "DOMNodeInsertedIntoDocument",
-    "DOMNodeRemoved", "DOMNodeRemovedFromDocument", "DOMSubtreeModified",
-    "downloading", "drag", "dragend", "dragenter", "dragleave", "dragover",
-    "dragstart", "drop", "durationchange", "emptied", "ended", "ended",
-    "endEvent", "error", "error", "error", "error", "error", "error", "focus",
-    "fullscreenchange", "fullscreenerror", "gamepadconnected",
-    "gamepaddisconnected", "gotpointercapture", "hashchange",
-    "lostpointercapture", "input", "invalid", "keydown", "keypress", "keyup",
-    "languagechange", "levelchange", "load", "load", "loadeddata",
-    "loadedmetadata", "loadend", "loadstart", "message", "message", "message",
-    "message", "mousedown", "mouseenter", "mouseleave", "mousemove",
-    "mouseout", "mouseover", "mouseup", "notificationclick", "noupdate",
-    "obsolete", "offline", "online", "open", "open", "orientationchange",
-    "pagehide", "pageshow", "paste", "pause", "pointercancel", "pointerdown",
-    "pointerenter", "pointerleave", "pointerlockchange", "pointerlockerror",
-    "pointermove", "pointerout", "pointerover", "pointerup", "play", "playing",
-    "popstate", "progress", "progress", "push", "pushsubscriptionchange",
-    "ratechange", "readystatechange", "repeatEvent", "reset", "resize",
-    "scroll", "seeked", "seeking", "select", "selectstart", "selectionchange",
-    "show", "stalled", "storage", "submit", "success", "suspend", "SVGAbort",
-    "SVGError", "SVGLoad", "SVGResize", "SVGScroll", "SVGUnload", "SVGZoom",
-    "timeout", "timeupdate", "touchcancel", "touchend", "touchenter",
-    "touchleave", "touchmove", "touchstart", "transitionend", "unload",
-    "updateready", "upgradeneeded", "userproximity", "versionchange",
-    "visibilitychange", "volumechange", "waiting", "wheel" 
-];
+// load all the valid event types ('click', 'blur', 'keypress', …)
+window.event_types = Object.keys(window).filter(function(property){
+    return (/^on/.test(property));
 
- // hoist this function to global scope.
- window.attachEvents = attachEvents;
+}).map(function(event_type) {
+    return event_type.replace(/^on/,'');
+
+});
+
+// hoist this function to global scope.
+window.attachEvents = attachEvents;
 
 })();
