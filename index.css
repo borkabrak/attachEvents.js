@@ -3,7 +3,45 @@ body {
     font-family: sans-serif; 
 }
 
-#input {
-    width: 80em;
-    height: 25em;
+.menu {
+    background-color: #C9C936;
+    border-radius: 0.5em;
+    transition: 100ms ease-out;
+    border: solid black 1px;
+}
+
+.menu .title {
+    cursor: pointer;
+    transition: inherit;
+    background-color: #cc0;
+    color: #c00;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    font-weight: bold;
+    border: solid #aa0 2px;
+    border-radius: inherit;
+    line-height: 1.5;
+}
+
+.menu .title:hover {
+    background-color: #ff0;
+    color: #f00;
+    border-color: #ff8; 
+}
+
+.menu .status {
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #080;
+}
+
+.menu ul {
+    margin-top: 0;
+    color: #008;
+}
+
+.menu ul li {
+    list-style-type: "∙ ";
+    border-bottom: solid #aa3 1px;
+    width: 50%;
 }
