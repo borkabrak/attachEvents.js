@@ -12,8 +12,10 @@
 
 <div class="menu">
 
-    <span class="status">+</span>
-    <span>Collapse</span>
+    <div class="title">
+        <span class="status"> ▼ </span>
+        <span class="label">Menu</span>
+    </div>
 
     <ul>
 
@@ -46,11 +48,11 @@ window.qs = qs; window.qsa = qsa; window.to_a = to_a;
 
 attachEvents({
 
-    '.menu span': {
+    '.menu .title': {
         'click': function() { 
             var hidden = ( qs(".menu ul").style.display === "none" );
             qs(".menu ul").style.display = ( hidden ? "block" : "none" );
-            qs(".menu .status").innerHTML = ( hidden ? "+" : "-" );
+            qs(".menu .status").innerHTML = ( hidden ? " ▼ " : " ▶ " );
         }
     }
 });
