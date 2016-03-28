@@ -7,12 +7,15 @@
     <title>Attach Events Demo</title>
 </head>
 <body>
-    <h1>Attach Events Demo</h1>
 
-    <ul class="menu">
+<h1>Attach Events Demo</h1>
 
-        <span class="status">+</span>
-        <span>Collapse</span>
+<div class="menu">
+
+    <span class="status">+</span>
+    <span>Collapse</span>
+
+    <ul>
 
         <li>
             Part One
@@ -27,29 +30,27 @@
         </li>
 
     </ul>
-
-    <button id="test">Click Me</button>
-
-    <div id="display"></div>
+</div>
 
 </body>
 <script src="attachEvents.js"></script>
 <script>
 "use strict";
 
-// shortcut functions for element selection
+// shortcut functions
 var qs   = (selector) => document.querySelector(selector),
     qsa  = (selector) => document.querySelectorAll (selector),
     // to_a() works for NodeList (returned by querySelectorAll), DOMTokenList (returned by classList), etc.
     to_a = (list) => Array.prototype.slice.call(list);
+window.qs = qs; window.qsa = qsa; window.to_a = to_a;
 
 attachEvents({
 
     '.menu span': {
         'click': function() { 
-            var hidden = ( qs("li").style.display === "none" );
-            to_a(qsa("li")).map((elem) => elem.style.display = ( hidden ? "list-item" : "none" ));
-            qs(".menu>.status").innerHTML = ( hidden ? "+" : "-" );
+            var hidden = ( qs(".menu ul").style.display === "none" );
+            qs(".menu ul").style.display = ( hidden ? "block" : "none" );
+            qs(".menu .status").innerHTML = ( hidden ? "+" : "-" );
         }
     }
 });
