@@ -10,11 +10,37 @@
 
 <h1>Attach Events Demo</h1>
 
-<div class="menu">
+<!-- Menu One - test behavior -->
+<div class="menu" id="test">
 
     <div class="title" title="Collapse/Expand the menu">
-        <span class="status"> ▼ </span>
-        <span class="label">Menu</span>
+        <span class="status"> ⊕ </span>
+        <span class="label">Test Menu</span>
+    </div>
+
+    <ul>
+
+        <li>
+            Part One
+        </li>
+
+        <li>
+            Part Two
+        </li>
+
+        <li>
+            Part Three
+        </li>
+
+    </ul>
+</div>
+
+<!-- Menu Two - negative testing -->
+<div class="menu" id="negative-test">
+
+    <div class="title" title="Collapse/Expand the menu">
+        <span class="status"> ⊕ </span>
+        <span class="label">Menu Two - Negative Testing</span>
     </div>
 
     <ul>
@@ -48,13 +74,18 @@ window.qs = qs; window.qsa = qsa; window.to_a = to_a;
 
 attachEvents({
 
-    '.menu .title': {
-        'click': function() { 
-            var hidden = ( qs(".menu ul").style.display === "none" );
-            qs(".menu ul").style.display = ( hidden ? "block" : "none" );
-            qs(".menu .status").innerHTML = ( hidden ? " ▼ " : " ▶ " );
+    // Clicking a menu title toggles its menu's visibility.
+    '.menu#test': {
+        '.title': {
+            'click': function() { 
+                var [list, statusicon] = [qs(".menu ul"), qs(".menu .status")];
+                var hidden = ( list.style.display === "none" );
+                list.style.display = ( hidden ? "block" : "none" );
+                statusicon.innerHTML = ( hidden ? " ⊕ " : " ⊖ " );
+            }
         }
     }
+
 });
 
 </script>

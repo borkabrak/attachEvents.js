@@ -51,6 +51,14 @@ EXAMPLE
 
        });
 
+        // Nesting selectors works as expected
+
+        ...???
+
+BUGS
+----
+
+* Nesting selectors SEEMS to work, but the entire hierarchy is not respected.
 
 TODO
 ----
