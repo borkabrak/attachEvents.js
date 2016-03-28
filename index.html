@@ -2,31 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+
     <title>Attach Events Demo</title>
 </head>
 <body>
     <h1>Attach Events Demo</h1>
 
-    <ul>
+    <ul class="menu">
 
-        <li id="item1">
+        <span>Collapsible List</span>
+
+        <li>
             Part One
         </li>
 
-        <li id="item2">
+        <li>
             Part Two
         </li>
 
-        <li id="item3">
+        <li>
             Part Three
         </li>
 
     </ul>
 
-    <ul>
-        <h3>This list has no class.</h3>
-        <p>Placeholder for negative testing.</p>
-    </ul>
+    <button id="test">Click Me</button>
+
+    <div id="display"></div>
 
 </body>
 <script src="attachEvents.js"></script>
@@ -35,16 +38,11 @@
     "use strict";
 
     attachEvents({
-
-            'click': () => console.log("document got a click."),
-
-            'li': {
-                'click': function(event) {
-                    event.target.style.backgroundColor = "#8a8";
-                    console.log("%s got a click.", event.target.id);
-                }
+        'button#test': {
+            'click': function() {
+               document.querySelector("#display").innerHTML = "clicked"; 
             }
-        
+        }
     });
 
 </script>

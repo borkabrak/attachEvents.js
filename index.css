@@ -1,0 +1,9 @@
+body {
+    background-color: #7B9B7B;
+    font-family: sans-serif; 
+}
+
+#input {
+    width: 80em;
+    height: 25em;
+}
