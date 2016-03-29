@@ -31,15 +31,15 @@
 "use strict";
 
 var attachEvents = function(behaviors, element) {
-    // 'document' is the default element to attach behavior to
-    if (typeof element === "undefined") { element = document};
+    // If no element, start at the top - document.body
+    if (typeof element === "undefined") { element = document.body};
 
     var keymap = {};
 
     Object.keys(behaviors).forEach(function(target) {
         // target is a selector.  Attach the actions to matching elements.
         if (document.querySelector(target)) {
-            Array.prototype.slice.call(document.querySelectorAll(target)).forEach(function(element) { 
+            Array.prototype.slice.call(element.querySelectorAll(target)).forEach(function(element) {
                 attachEvents(behaviors[target], element); 
             });
 
