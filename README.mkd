@@ -19,51 +19,40 @@ DESCRIPTION
 EXAMPLE
 -------
 
-    attachEvents({
+attachEvents({
 
-        // Attach actions to events by type.
-        'click': function(event) { 
-            console.log("click received by something on the document.")
-        },
+    // Attach to event types by name.
+    'click': (event) => console.log("click received anywhere on the document."),
 
-        // A single character index attaches actions to specific keypresses
-        'o': function(event) {
-            console.log("The 'o' key has been pressed.")
-        },
+    // Attach actions to specific keypresses with single-letter property names.
+    'o': (event) => console.log("The 'o' key has been pressed anywhere on the doc."),
 
-       // Use CSS selectors to attach actions to specific elements
-       '#target': {
+    // Attach to specific elements with CSS selectors.
+    'h1': {
+        'click': (event) => event.target.innerHTML = "This is now the content of the clicked <h1> element.",
+        'o'    : (event) => event.target.innerHTML = "This becomes the content of the <h1> when the 'o' key is pressed while the element is focused"
+    },
 
-            'focus': function() { 
-                console.log("The element with id 'target' has received focus.");
+    // Nest selectors for finer control.
+    'ul.target': {
+        'li': 'click': (event) => event.target.innerHTML = "This changes the content only of an <li> that is part of a <ul> with class 'target'.",
+        'div': function(event) {
+            event.target.innerHTML = "And this lets us attach different events to different parts of the <ul>, like a <div> within it."
+        }
+    }
 
-            // May as well use arrow functions for one-liners..
-            'o': (event) => event.target.innerHTML = "The 'o' key has been received by this element."
-
-            }
-       },
-
-       // CSS selectors also work for ALL matching elements.
-       'h1': {
-
-           'click': (event) =>
-                event.target.innerHTML = "text appended onclick for this particular <h1> element, though they all have their own copy of this event."
-
-       });
-
-        // Nesting selectors works as expected
-
-        ...???
-
-BUGS
-----
-
-* Nesting selectors SEEMS to work, but the entire hierarchy is not respected.
+});
 
 TODO
 ----
-* support nested element selectors.
-* dynamic event detection? (instead of checking a hardcoded array of event names).
+
 * Improve demo with clear examples of each specific feature.
 
-* set 'this' to event.target?
+* Set 'this' to event.target?  Or provide some other easy shortcut for
+  referring to the element specified by the most proximate selector.
+
+* Forget automatically handling key mappings, and just instruct the user to
+  nest them under 'keypressed'.  Currently, there is a conflict between using
+  single-letter keys for 'keypressed', and single-letter elements, like <a>,
+  or <i>.
+  

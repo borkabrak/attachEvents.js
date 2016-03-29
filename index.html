@@ -65,12 +65,10 @@
 <script>
 "use strict";
 
-// shortcut functions
-var qs   = (selector) => document.querySelector(selector),
-    qsa  = (selector) => document.querySelectorAll (selector),
-    // to_a() works for NodeList (returned by querySelectorAll), DOMTokenList (returned by classList), etc.
-    to_a = (list) => Array.prototype.slice.call(list);
-window.qs = qs; window.qsa = qsa; window.to_a = to_a;
+// shortcuts for element selection
+var to_a = (list)     => Array.prototype.slice.call(list); // cast anything iterable to an Array
+var qs   = (selector) => document.querySelector(selector);
+var qsa  = (selector) => to_a(document.querySelectorAll(selector));
 
 attachEvents({
 

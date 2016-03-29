@@ -1,7 +1,6 @@
 /***
  * Attach events, easily.
  *
- *
  * USAGE:
  *
  *   attachEvents(behaviors);
@@ -9,22 +8,8 @@
  *   'behaviors' is an object/hash/associative array that relates event types,
  *   specific keystrokes, or CSS-style element selectors to the actions they should trigger.
  *
+ *   Check the README.mkd for more details.
  *
- * EXAMPLE:
- *
- *    attachEvents({
- *
- *        // attach actions to events
- *        'click': (event) => console.log("click received."),
- *
- *       // attach actions to specific keypresses
- *        'o': (event) => console.log("The 'o' key has been received."),
- *
- *       // attach whatever to specific elements
- *       'h1': {
- *           'click': ()  => event.target.innerHTML = "click received on an <h1>",
- *           'o': (event) => event.target.innerHTML = "The 'o' key has been received by an <h1>."
- *       });
  */
 
 (function(){
