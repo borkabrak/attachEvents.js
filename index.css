@@ -10,6 +10,7 @@ body {
     border: solid black 1px;
     max-width: 30em;
     line-height: 1.5;
+    margin-bottom: 1em;
 }
 
 .menu .title {
